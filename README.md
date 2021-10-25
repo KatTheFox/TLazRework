@@ -1,3 +1,5 @@
-# tlaz
+# Tainted Laz Rework
 
-tlaz is a mod for *[Binding of Isaac: Afterbirth+](https://store.steampowered.com/app/570660/The_Binding_of_Isaac_Afterbirth/)*, written in [TypeScript](https://www.typescriptlang.org/) using the [IsaacScript](https://isaacscript.github.io/) framework.
+A simple-ish mod that makes Tainted Laz no longer be forced to flip on room clear, but instead when you take damage
+
+Thanks to Moox on discord for the idea
