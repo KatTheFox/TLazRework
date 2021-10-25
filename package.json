@@ -1,6 +1,6 @@
 {
   "name": "tlaz",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A mod for The Binding of Isaac: Afterbirth+",
   "keywords": [
     "isaac",
@@ -11,9 +11,9 @@
   ],
   "license": "GPL-3.0",
   "dependencies": {
-    "isaac-typescript-definitions": "^1.0.190",
-    "isaacscript": "^1.1.23",
-    "isaacscript-common": "^1.0.329",
-    "isaacscript-lint": "^1.0.61"
+    "isaac-typescript-definitions": "^1.0.239",
+    "isaacscript": "^1.1.26",
+    "isaacscript-common": "^1.0.350",
+    "isaacscript-lint": "^1.0.63"
   }
 }
