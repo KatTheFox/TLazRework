@@ -2227,23 +2227,21 @@ local ____exports = {}
 local ____isaacscript_2Dcommon = require("lua_modules.isaacscript-common.dist.index")
 local addFlag = ____isaacscript_2Dcommon.addFlag
 local getPlayers = ____isaacscript_2Dcommon.getPlayers
-local doit, update, playerDMG, roomClear
-function update(self)
-    if doit == 1 then
-        for ____, i in ipairs(
-            getPlayers(nil, true)
-        ) do
-            if (i:GetPlayerType() ~= PlayerType.PLAYER_LAZARUS_B) and (i:GetPlayerType() ~= PlayerType.PLAYER_LAZARUS2_B) then
-                return
-            end
-            i:UseActiveItem(
-                CollectibleType.COLLECTIBLE_FLIP,
-                addFlag(nil, UseFlag.USE_NOANIM, UseFlag.USE_NOANNOUNCER),
-                -1
-            )
+local runInNFrames = ____isaacscript_2Dcommon.runInNFrames
+local flipp, playerDMG, roomClear
+function flipp(self)
+    for ____, i in ipairs(
+        getPlayers(nil, true)
+    ) do
+        if (i:GetPlayerType() ~= PlayerType.PLAYER_LAZARUS_B) and (i:GetPlayerType() ~= PlayerType.PLAYER_LAZARUS2_B) then
+            return
         end
+        i:UseActiveItem(
+            CollectibleType.COLLECTIBLE_FLIP,
+            addFlag(nil, UseFlag.USE_NOANIM, UseFlag.USE_NOANNOUNCER),
+            -1
+        )
     end
-    doit = ((doit <= 1) and 0) or (doit - 1)
 end
 function playerDMG(self, entity)
     local player = entity:ToPlayer()
@@ -2260,14 +2258,12 @@ function playerDMG(self, entity)
     )
 end
 function roomClear(self)
-    doit = 5
+    runInNFrames(nil, 5, flipp)
 end
-doit = 0
 function ____exports.default(self)
     local mod = RegisterMod("Tainted Laz Rework", 1)
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, playerDMG)
     mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, roomClear)
-    mod:AddCallback(ModCallbacks.MC_POST_UPDATE, update)
 end
 return ____exports
  end,
